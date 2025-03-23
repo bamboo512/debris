@@ -1,5 +1,3 @@
-好的，这是将您的 README 文件翻译成中文的版本：
-
 # Debris
 
 **弥合设计库格式之间的鸿沟。**
@@ -26,10 +24,10 @@ Debris 通过命令行使用。
 
 您需要指定输入和输出格式，以及输入和输出路径。
 
-示例：将 Billfish 库转换为 Pixcall 库
+示例：将 Billfish 库转换为 Eagle 库
 
 ```
-debris --from billfish --to pixcall --input ./oldFolder.billfish --output ./newFolder
+debris --from billfish --to eagle --input ./Billfish --output ./Eagle
 ```
 
 基本命令结构为：
@@ -38,6 +36,6 @@ debris --from <输入格式> --to <输出格式> --input <输入路径> --output
 ```
 
 * `--from billfish` 或 `-f billfish`：指定输入库格式为 Billfish。
-* `--to pixcall` 或 `-t pixcall`：指定所需的输出库格式为 Pixcall。
-* `--input ./oldFolder.billfish` 或 `-i ./oldFolder.billfish`：指示输入 Billfish 库文件或目录的路径。目前，它期望一个 Billfish 库文件夹。
-* `--output ./newFolder` 或 `-o ./newFolder`：指定保存转换后的 Pixcall 库的输出目录。
+* `--to eagle` 或 `-t eagle`：指定所需的输出库格式为 Eagle。
+* `--input ./Billfish` 或 `-i ./Billfish`：指示输入 Billfish 库文件或目录的路径。目前，它期望一个 Billfish 库文件夹。
+* `--output ./Eagle` 或 `-o ./Eagle`：指定保存转换后的 Eagle 库的输出目录。

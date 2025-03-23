@@ -26,10 +26,10 @@ Debris is used via the command line.
 
 You need to specify the input and output formats, as well as the input and output paths.
 
-Example: Converting a Billfish library to a Pixcall library
+Example: Converting a Billfish library to a Eagle library
 
 ```
-debris --from billfish --to pixcall --input ./oldFolder.billfish --output ./newFolder
+debris --from billfish --to eagle --input ./Billfish --output ./Eagle
 ```
 
 The basic command structure is:
@@ -38,6 +38,6 @@ debris --from <input_format> --to <output_format> --input <input_path> --output 
 ```
 
 - `--from billfish` or `-f billfish`: Specifies the input library format as Billfish.
-- `--to pixcall` or `-t pixcall`: Specifies the desired output library format as Pixcall.
-- `--input ./oldFolder.billfish` or `-i ./oldFolder.billfish`: Indicates the path to the input Billfish library file or directory. Currently, it expects a Billfish library folder.
-- `--output ./newFolder` or `-o ./newFolder`: Specifies the output directory where the converted Pixcall library will be saved.
+- `--to eagle` or `-t eagle`: Specifies the desired output library format as Pixcall.
+- `--input ./Billfish` or `-i ./Billfish`: Indicates the path to the input Billfish library file or directory. Currently, it expects a Billfish library folder.
+- `--output ./newFolder` or `-o ./newFolder`: Specifies the output directory where the converted library will be saved.

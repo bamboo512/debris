@@ -24,18 +24,18 @@ Debris 通過命令列使用。
 
 您需要指定輸入和輸出格式，以及輸入和輸出路徑。
 
-範例：將 Billfish 庫轉換為 Pixcall 庫
+範例：將 Billfish 庫轉換為 Eagle 庫
 
-```
-debris --from billfish --to pixcall --input ./oldFolder.billfish --output ./newFolder
+```shell
+debris --from billfish --to eagle --input ./Billfish --output ./Eagle
 ```
 
 基本命令結構為：
-```
+```shell
 debris --from <輸入格式> --to <輸出格式> --input <輸入路徑> --output <輸出路徑>
 ```
 
 * `--from billfish` 或 `-f billfish`：指定輸入庫格式為 Billfish。
-* `--to pixcall` 或 `-t pixcall`：指定所需的輸出庫格式為 Pixcall。
-* `--input ./oldFolder.billfish` 或 `-i ./oldFolder.billfish`：指示輸入 Billfish 庫檔案或目錄的路徑。目前，它期望一個 Billfish 庫資料夾。
-* `--output ./newFolder` 或 `-o ./newFolder`：指定保存轉換後的 Pixcall 庫的輸出目錄。
+* `--to eagle` 或 `-t eagle`：指定所需的輸出庫格式為 Eagle。
+* `--input ./Billfish` 或 `-i ./Billfish`：指示輸入 Billfish 庫檔案或目錄的路徑。目前，它期望一個 Billfish 庫資料夾。
+* `--output ./Eagle` 或 `-o ./Eagle`：指定保存轉換後的 Eagle 庫的輸出目錄。
