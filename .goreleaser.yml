@@ -1,0 +1,64 @@
+# .goreleaser.yml
+version: 2 # 使用当前的 goreleaser 配置版本
+
+# 项目元数据 (可选，但推荐)
+project_name: debris
+
+# 定义构建过程
+builds:
+  - # 第一个构建定义 (通常是主要的)
+    id: debris # 构建 ID
+    main: . # 主包路径 (例如 ./cmd/debris)
+    binary: debris # 输出的二进制文件名 (不含扩展名)
+    # 使用 ldflags 优化输出大小
+    ldflags:
+      - -s -w
+    # 指定目标平台
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    # 如果你的项目使用 CGO:
+    # env:
+    #   - CGO_ENABLED=1
+    # # 注意: 使用 CGO 配合 goreleaser 可能需要 Docker 环境或手动配置交叉编译器
+    # # GoReleaser Pro 可以更好地处理 CGO 交叉编译
+
+# 定义打包格式 (archives)
+archives:
+  - # 第一个归档定义
+    id: debris_archives
+    builds: [debris] # 引用上面的构建 ID
+    # 自定义包名模板
+    name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+    format: zip # 可以是 zip 或 tar.gz, 或者 binary (不打包)
+    # # 将 README, LICENSE 等文件包含在包里 (可选)
+    # files:
+    #   - README*.md
+    #   - LICENSE
+
+# 定义校验和文件生成
+checksum:
+  name_template: 'checksums.txt'
+
+# 发布到 GitHub/GitLab (可选)
+# release:
+#   github:
+#     owner: your_github_username
+#     name: your_repo_name
+#   # GitLab 配置类似
+
+# 快照发布 (用于测试, 不打 tag) (可选)
+# snapshot:
+#   name_template: "{{ incpatch .Version }}-next"
+
+# Changelog 生成 (可选)
+# changelog:
+#   sort: asc
+#   filters:
+#     exclude:
+#       - '^docs:'
+#       - '^test:'
