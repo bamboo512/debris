@@ -1,0 +1,74 @@
+# .goreleaser.yml
+# More info at: https://goreleaser.com/config/
+version: 2
+
+project_name: debris
+
+before:
+  hooks:
+    # Run go mod tidy and go mod vendor before building to ensure dependencies are up-to-date and vendored.
+    - go mod tidy
+
+builds:
+  - id: debris
+    main: . # 主包路径 (例如 ./cmd/debris) - Adjust if your main.go is not in the root
+    binary: debris
+    ldflags:
+      - -s -w
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+    # env:
+    # 如果项目使用 CGO (debris 项目目前不使用 CGO，未来也尽量不使用 CGO)
+    #   - CGO_ENABLED=1
+    # # 如果需要特定的 C 交叉编译配置，可以在 env 中设置 CC 等环境变量
+
+archives:
+  - ids: [debris]
+    name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+    formats: ['zip']
+    # files: # 建议包含 README 和 LICENSE 文件
+    #   - README.md
+    #   - LICENSE
+    #   - CHANGELOG.md # 如果有 Changelog 文件也建议包含
+    #   # 可以根据需要添加其他文件，例如配置文件、文档等
+
+checksum:
+  name_template: 'checksums.txt'
+
+release: # 如果需要自动发布到 GitHub Release，取消注释并配置
+  disable: false # 默认为 false，如果不需要 release 阶段可以设置为 true
+  draft: true # 设置为 true 则发布为草稿，方便手动审核后再发布
+  prerelease: auto #  设置为 auto 时，如果版本号包含 -alpha, -beta, -rc 等，则发布为 prerelease
+  github:
+    owner: bamboo512
+    name: debris
+
+# snapshot: # 如果需要 snapshot 版本 (用于 CI 或 nightly build)，取消注释并配置
+#   name_template: "{{ incpatch .Version }}-next"
+#   changelog: false # 快照版本通常不需要 changelog
+
+# changelog: # 如果需要自动生成 Changelog，取消注释并配置
+#   sort: asc # 排序方式，可以是 asc 或 desc
+#   filters:
+#     exclude:
+#       - '^docs:'
+#       - '^test:'
+
+# Signs the files with cosign
+# cosign:
+#   # You can disable cosign entirely
+#   disable: false
+#   # Which files should be signed?
+#   files:
+#     - none # default
+#   # Max number of workers to run signing in parallel
+#   max_concurrency: 0 # unlimited
+
+# Dist uploads.
+# dist: ./dist
